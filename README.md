@@ -7,6 +7,7 @@
 ---
 
 - **23-10-21 : #0.0 ~ #1.3 / Framework Overview (1)**
+- **23-10-22 : #1.4 ~ #1.5 / Framework Overview (2)**
 
 ---
 

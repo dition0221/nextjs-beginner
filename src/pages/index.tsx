@@ -5,6 +5,11 @@ export default function index() {
     <div>
       <NavBar />
       <h1>Hello</h1>
+      <style jsx>{`
+        a {
+          color: blue;
+        }
+      `}</style>
     </div>
   );
 }
