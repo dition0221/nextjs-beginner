@@ -3,6 +3,7 @@
 # Custom
 /.vscode
 /필기 요약지
+.env
 
 # dependencies
 /node_modules
