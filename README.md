@@ -67,6 +67,8 @@
          - 해당 컴포넌트 내부로 범위가 한정됨
        - 'props' 사용 가능
 - **23-10-24 : #1.6 ~ #1.7 + #2.0 ~ #2.4 / Framework Overview (3) + API**
+- **23-10-26 : API Route**
+  - <a href="https://youtu.be/J4pdHM-oG-s" target="_blank">참고자료</a>
 
 ---
 
