@@ -1,30 +1,24 @@
-import Image from "next/image";
 import { useEffect, useState } from "react";
+// API & Interface
 // Components
 import Seo from "@/components/Seo";
+import { IFetchProps } from "./api/getMovies";
 
-interface IMovie {
-  id: number;
-  original_title: string;
-  poster_path: string;
-}
-interface IFetchProps {
-  results: IMovie[];
-}
-const options = {
-  method: "GET",
-  headers: {
-    accept: "application/json",
-    Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
-  },
-};
+export default function Home() {
+  // Get movie API
+  const [data, setData] = useState<IFetchProps>();
+  useEffect(() => {
+    (async () => {
+      const res = (await (await fetch("/api/getMovies")).json()) as IFetchProps;
+      if (res) setData(res);
+    })();
+  }, []);
 
-export default function Home({ results }: IFetchProps) {
   return (
     <div className="container">
       <Seo title="Home" />
-      {!results && <h3>Loading...</h3>}
-      {results?.map((movie) => (
+      {!data && <h3>Loading...</h3>}
+      {data?.results.map((movie) => (
         <div className="movie" key={movie.id}>
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -59,7 +53,7 @@ export default function Home({ results }: IFetchProps) {
   );
 }
 
-export async function getServerSideProps() {
+/* export async function getServerSideProps() {
   const options = {
     method: "GET",
     headers: {
@@ -76,3 +70,4 @@ export async function getServerSideProps() {
 
   return { props: { results } };
 }
+ */

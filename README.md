@@ -6,7 +6,7 @@
 
 ---
 
-- **23-10-21 : #0.0 ~ #1.3 / Framework Overview (1)**
+- **23-10-21 : #0.0 ~ #1.3 / Framework Overview**
   - Next.js 프로젝트 생성 : 터미널에 'npx create-next-app@latest (폴더명)' 입력
     - 기본적으로 TypeScript, ESLint, Tailwind CSS 구성과 함께 제공됨
   - Framework VS Library
@@ -53,7 +53,7 @@
         - 이전 페이지는 브라우저 히스토리에서 사라짐
       - router.prefetch(): 다음 페이지로의 사전 로드를 시작
         - 페이지가 클릭되기 전에 페이지를 미리 로드하여, 빠른 페이지 전환을 가능하게 함
-- **23-10-22 : #1.4 ~ #1.5 / Framework Overview (2)**
+- **23-10-22 : #1.4 ~ #1.5 / CSS in Next.js**
   - CSS
     1. 컴포넌트의 'style' 프로퍼티로 추가하는 방법
     2. '.module.css' 파일을 사용하는 방법
@@ -66,9 +66,38 @@
        - 각 파일에 독립되어 있어서, 하위 컴포넌트 파일에 영향을 주지 않음
          - 해당 컴포넌트 내부로 범위가 한정됨
        - 'props' 사용 가능
-- **23-10-24 : #1.6 ~ #1.7 + #2.0 ~ #2.4 / Framework Overview (3) + API**
-- **23-10-26 : API Route**
-  - <a href="https://youtu.be/J4pdHM-oG-s" target="_blank">참고자료</a>
+- **23-10-24 : #1.6 ~ #1.7 + #2.0 ~ #2.4 / App component + API**
+  - App Component
+    - App 내의 모든(전역) component에 적용할 수 있는 component
+      - 전역 styling 또는 전역 컴포넌트(ex. &lt;nav&gt;) 적용 가능
+    - 사용법
+      1. 'pages'폴더 내에 '\_app'이라는 파일 생성하기
+         - Next.js는 특정 page파일을 확인하기 전에 '\_app'파일을 먼저 확인함
+      2. '\_app'파일에서 컴포넌트 생성하기
+         - 컴포넌트명은 아무거나 가능
+           - 2개의 매개변수를 가짐
+           - 첫 번째 매개변수 : page 컴포넌트 - 두 번째 매개변수 : pageProps
+         - > import { AppProps } from "next/app";
+           > export default function App({ Component, pageProps }: AppProps) {
+           > &nbsp;&nbsp;return &lt;Component {...pageProps} /&gt;;
+           > }
+      3. 커스텀하기
+         - '\_app'파일에서 프로젝트 전역 styling이나 전역 컴포넌트 적용 가능
+           - 컴포넌트나 page파일에서는 '.css'파일을 import할 수 없음
+             - '.module.css'파일만 가능
+           - '\_app'파일에서는 '.css'파일 import 가능
+  - Layout 패턴
+    - '\_app'파일 내에는 많은 코드를 원하지 않기 때문에, &lt;Layout&gt; 컴포넌트를 사용
+      - return하는 코드들은 &lt;Layout&gt;에서 작성
+      - '\_app'파일에서는 주로 import문 사용
+    - 사용법
+      1. Layout 컴포넌트 파일 생성 및 코드 작성하기
+      2. '\_app'파일에서 &lt;Layout&gt; 컴포넌트 내에 page 컴포넌트 넣기
+- **23-10-26 : API Route(1)**
+  - <a href="https://youtu.be/J4pdHM-oG-s" target="_blank">참고 동영상</a>
+- **23-10-28 : API Route(2)**
+  - <a href="https://nextjs.org/docs/app/api-reference/file-conventions/route" target="_blank">참고 공식문서</a>
+  - <a href="https://nextjs.org/docs/pages/building-your-application/routing/api-routes" target="_blank">참고 공식문서</a>
 
 ---
 
