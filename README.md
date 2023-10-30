@@ -98,6 +98,7 @@
 - **23-10-28 : API Route(2)**
   - <a href="https://nextjs.org/docs/app/api-reference/file-conventions/route" target="_blank">참고 공식문서</a>
   - <a href="https://nextjs.org/docs/pages/building-your-application/routing/api-routes" target="_blank">참고 공식문서</a>
+- **23-10-30 : #2.5 ~ #2.8 / Router**
 
 ---
 

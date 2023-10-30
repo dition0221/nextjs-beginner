@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 // API & Interface
+import { IFetchProps } from "./api/getMovies";
 // Components
 import Seo from "@/components/Seo";
-import { IFetchProps } from "./api/getMovies";
 
 export default function Home() {
   // Get movie API
@@ -14,17 +16,28 @@ export default function Home() {
     })();
   }, []);
 
+  // Routing Hook
+  const router = useRouter();
+  const onClick = (id: number, title: string) =>
+    router.push(`/movies/${title}/${id}`);
+
   return (
     <div className="container">
       <Seo title="Home" />
       {!data && <h3>Loading...</h3>}
       {data?.results.map((movie) => (
-        <div className="movie" key={movie.id}>
+        <div
+          onClick={() => onClick(movie.id, movie.original_title)}
+          className="movie"
+          key={movie.id}
+        >
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt=""
           />
-          <h4>{movie.original_title}</h4>
+          <Link href={`/movies/${movie.original_title}/${movie.id}`}>
+            <h4>{movie.original_title}</h4>
+          </Link>
         </div>
       ))}
 
@@ -34,6 +47,9 @@ export default function Home() {
           grid-template-columns: 1fr 1fr;
           padding: 20px;
           gap: 20px;
+        }
+        .movie {
+          cursor: pointer;
         }
         .movie img {
           max-width: 100%;
@@ -53,6 +69,7 @@ export default function Home() {
   );
 }
 
+// * Server Side Rendering (SSR)
 /* export async function getServerSideProps() {
   const options = {
     method: "GET",
