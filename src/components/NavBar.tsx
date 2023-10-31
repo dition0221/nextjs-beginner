@@ -19,6 +19,7 @@ export default function NavBar() {
           About
         </Link>
       </div>
+
       <style jsx>{`
         nav {
           display: flex;
@@ -34,16 +35,16 @@ export default function NavBar() {
           max-width: 100px;
           margin-bottom: 5px;
         }
-        nav a {
+        nav div {
+          display: flex;
+          gap: 10px;
+          text-decoration: none;
+          font-style: italic;
           font-weight: 600;
           font-size: 18px;
         }
         .active {
           color: tomato;
-        }
-        nav div {
-          display: flex;
-          gap: 10px;
         }
       `}</style>
     </nav>
